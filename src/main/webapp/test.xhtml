@@ -1,0 +1,131 @@
+<!--
+        * This HTML document serves as the user interface for managing a list of music items
+        * within a JavaServer Faces (JSF) application using the PrimeFaces framework.
+        * It provides functionalities for displaying, adding, and deleting music items in a dynamic table format.
+        *
+        * The document contains the following main components:
+        *
+        * - **Head Section**: Sets the title of the page and links to external CSS for styling
+        *   and a JavaScript file for additional client-side functionality.
+        *
+        * - **View Parameters**: Utilizes JSF view parameters to manage the selected table,
+        *   allowing for navigation between different data sets.
+        *
+        * - **Form Structure**: Encapsulates all interactive elements within a form to ensure
+        *   proper data handling and user interaction.
+        *
+        * - **Navigation and Theme Toggle Buttons**:
+        *   - A button to navigate back to the previous table list using browser history.
+        *   - A theme toggle button to switch between different visual themes for the application,
+        *     enhancing the user experience.
+        *
+        * - **Data Table**: Displays a table of music items, dynamically populated with fields for
+        *   first name, last name, song title, artist name, and the year of release.
+        *   Each row includes a delete action to allow users to remove items from the list.
+        *
+        * - **Messages Component**: Implements a messages area that automatically updates to
+        *   provide feedback to users about operations like deletion or item addition.
+        *
+        * - **Dialog for Adding New Items**: Includes a modal dialog to facilitate the entry
+        *   of new music items. It contains input fields for each relevant attribute and buttons
+        *   for saving or canceling the addition.
+        *
+        * - **Validation**: Ensures that all required fields must be filled before saving new items,
+        *   enhancing data integrity.
+        *
+        * Overall, this document provides an interactive interface for users to manage a
+        * list of music items efficiently, leveraging the features of JSF and PrimeFaces
+        * for a smooth user experience.
+-->
+
+
+        <!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Tables List</title>
+    <h:outputStylesheet name="test.css" />
+    <h:outputScript name="test.js" />
+</h:head>
+
+<h:body>
+    <f:view>
+        <f:metadata>
+            <f:viewParam name="selectedTable" value="#{testView.selectedTable}" />
+        </f:metadata>
+    </f:view>
+
+    <h:form id="form1">
+        <p:commandButton value="Back to Table List" onclick="window.history.back();" type="button"
+                         icon="pi pi-arrow-left" styleClass="ui-button-secondary" />
+        <div style="text-align: right;">
+            <p:commandButton id="themeToggleButton" widgetVar="themeToggleButtonWidget"
+                             onclick="toggleTheme()" type="button" icon="pi pi-sun"
+                             styleClass="theme-toggle-button" oncomplete="updateThemeButtonIcon()" />
+        </div>
+
+        <div class="form-container">
+            <p:dataTable var="item" value="#{testView.currentTableData}" id="dynamicTable" class="p-dataTable">
+                <p:column headerText="First Name">
+                    <h:outputText value="#{item.firstName}" />
+                </p:column>
+                <p:column headerText="Last Name">
+                    <h:outputText value="#{item.lastName}" />
+                </p:column>
+                <p:column headerText="Song">
+                    <h:outputText value="#{item.song}" />
+                </p:column>
+                <p:column headerText="Artist">
+                    <h:outputText value="#{item.artist}" />
+                </p:column>
+                <p:column headerText="Released Year">
+                    <h:outputText value="#{item.released}" />
+                </p:column>
+                <p:column headerText="Actions">
+                    <p:commandButton value="Delete" action="#{testView.deleteItem(item)}"
+                                     styleClass="delete-button" update=":form1:dynamicTable :form1:msgs"
+                                     icon="pi pi-trash" process="@this"/>
+                </p:column>
+            </p:dataTable>
+
+            <p:messages id="msgs" autoUpdate="true" class="p-messages" />
+
+            <p:commandButton value="Add New Item" onclick="PF('addDlg').show();" icon="pi pi-plus" type="button" class="add-button" styleClass="addTable-button" />
+
+            <p:dialog header="Add New Item" widgetVar="addDlg" modal="true" closable="false">
+                <h:panelGrid columns="2">
+                    <h:outputLabel for="newFirstName" value="First Name:" />
+                    <p:inputText id="newFirstName" value="#{testView.newItem.firstName}" required="true" />
+
+                    <h:outputLabel for="newLastName" value="Last Name:" />
+                    <p:inputText id="newLastName" value="#{testView.newItem.lastName}" required="true" />
+
+                    <h:outputLabel for="newSong" value="Song:" />
+                    <p:inputText id="newSong" value="#{testView.newItem.song}" required="true" />
+
+                    <h:outputLabel for="newArtist" value="Artist:" />
+                    <p:inputText id="newArtist" value="#{testView.newItem.artist}" required="true" />
+
+                    <h:outputLabel for="newReleased" value="Released Year:" />
+                    <p:inputText id="newReleased" value="#{testView.newItem.released}" required="true" />
+                </h:panelGrid>
+
+                <div style="display: flex; justify-content: space-between">
+                <p:commandButton value="Save" action="#{testView.saveNewItem}"
+                                 update=":form1:dynamicTable :form1:msgs"
+                                 process="@form"
+                                 styleClass="save-button"
+                                 oncomplete="if (!args.validationFailed) { PF('addDlg').hide(); }" />
+
+
+                <p:commandButton value="Cancel" onclick="PF('addDlg').hide();" type="button" styleClass="ui-button-secondary2" />
+                </div>
+            </p:dialog>
+        </div>
+    </h:form>
+</h:body>
+</html>

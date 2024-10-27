@@ -1,0 +1,82 @@
+<!--
+This XHTML document represents a JSF (JavaServer Faces) page that displays a list of available tables
+and allows users to add, edit, or delete tables. It integrates PrimeFaces components for enhanced UI functionality.
+
+Key components include:
+- **Head Section**: Contains the title of the page and links to external CSS and JavaScript files.
+- **Body Section**: Contains a form that includes the following elements:
+  - **Header**: Displays the title "Available Tables".
+  - **Action Buttons**:
+    - A button to add a new table that triggers a dialog.
+    - A button to toggle the theme of the application, changing between light and dark modes.
+  - **Data Table**: Displays the list of tables using `p:dataTable`, allowing for pagination, filtering, and sorting.
+    - Each table name is a link that navigates to another page (`test.xhtml`) with the selected table as a parameter.
+    - Two action buttons for each table to edit or delete the table. The edit button opens a dialog for renaming the table.
+  - **Edit Table Dialog**: A modal dialog that allows users to edit the name of a selected table.
+  - **Add Table Dialog**: A modal dialog for entering a new table name and adding it to the list.
+-->
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <title>Tables List</title>
+    <h:outputStylesheet name="tablelist.css" />
+    <h:outputScript name="test.js" />
+</h:head>
+
+<h:body>
+    <h:form id="tableListForm">
+        <h2>Available Tables</h2>
+
+
+        <div style="text-align: right;">
+            <p:commandButton styleClass="addTable-button" value="Add Table" icon="pi pi-plus"
+                             onclick="PF('addTableDialog').show();" type="button" />
+            <p:commandButton id="themeToggleButton" widgetVar="themeToggleButtonWidget"
+                             onclick="toggleTheme()" type="button" icon="pi pi-sun"
+                             styleClass="theme-toggle-button" oncomplete="updateThemeButtonIcon()" />
+        </div>
+
+
+        <p:dataTable value="#{tableView.tables}" var="table" id="tableDataTable" styleClass="custom-table"
+                     paginator="true" rows="5" rowsPerPageTemplate="5,10,15">
+            <p:column headerText="Table Name" sortBy="#{table}" filterBy="#{table}" filterMatchMode="contains">
+                <h:outputLink value="test.xhtml?selectedTable=#{table}">
+                    <h:outputText value="#{table}" />
+                </h:outputLink>
+            </p:column>
+
+            <p:column headerText="Actions" styleClass="actions-column">
+                <p:commandButton value="Edit" action="#{tableView.prepareEditTable(table, tableView.tables.indexOf(table))}"
+                                 update=":tableListForm:editTableDialog" icon="pi pi-pencil"
+                                 oncomplete="PF('editTableDialog').show();" styleClass="edit-button" />
+                <p:commandButton value="Delete" action="#{tableView.removeTable(table)}"
+                                 icon="pi pi-trash" update="tableListForm" styleClass="delete-button" />
+            </p:column>
+        </p:dataTable>
+
+        <p:dialog id="editTableDialog" header="Edit Table Name" widgetVar="editTableDialog" modal="true" closable="true">
+            <h:panelGrid columns="2">
+                <h:outputLabel for="editedTableInput" value="Edit Table Name:" />
+                <p:inputText id="editedTableInput" value="#{tableView.editedTableName}" />
+            </h:panelGrid>
+            <p:commandButton value="Update" action="#{tableView.updateTable}" update="tableListForm"
+                             oncomplete="PF('editTableDialog').hide();" />
+        </p:dialog>
+
+        <p:dialog id="addTableDialog" header="Add New Table" widgetVar="addTableDialog" modal="true" closable="true">
+            <h:panelGrid columns="2">
+                <h:outputLabel for="newTableInput" value="Enter Table Name:" />
+                <p:inputText id="newTableInput" value="#{tableView.newTableName}" />
+            </h:panelGrid>
+            <p:commandButton styleClass="dialog-add-button" value="Add" action="#{tableView.addTable}" update="tableListForm"
+                             oncomplete="PF('addTableDialog').hide();" />
+        </p:dialog>
+    </h:form>
+</h:body>
+</html>

@@ -1,0 +1,176 @@
+body {
+    background-color: #f0f0f0;
+    color: black;
+}
+
+body.dark-mode {
+    background-color: #000000;
+    color: white;
+}
+
+.p-dataTable {
+    width: 100%;
+}
+
+.p-dataTable th {
+    background-color: #e0e0e0;
+    color: black;
+}
+
+.p-dataTable td {
+    background-color: #ffffff;
+    color: black;
+}
+
+body.dark-mode .p-dataTable th {
+    background-color: #333333;
+    color: white;
+}
+
+body.dark-mode .p-dataTable td {
+    background-color: #444444;
+    color: white;
+}
+
+.addTable-button {
+    margin-top: 10px !important;
+    margin-right: 10px !important;
+    font-size: 0.7em !important;
+    width: 15%;
+    transition: font-size 0.3s ease !important;
+    background-color: #007bff;
+    color: white;
+    border: none;
+}
+
+.addTable-button:hover {
+    font-size: 0.8em !important;
+    background-color: white;
+    color: #007bff;
+}
+
+.save-button {
+    margin-right: auto;
+    font-size: 0.7em !important;
+    width: 45%;
+    background-color: #28a745 !important;
+    color: white;
+    border: none;
+    transition: font-size 0.3s ease !important;
+}
+
+.save-button:hover {
+    background-color: white !important;
+    font-size: 0.8em !important;
+    color: #28a745 !important;
+}
+
+.buttons-dialog {
+    margin-top: 5px !important;
+}
+
+.ui-button {
+    margin-bottom: 10px !important;
+}
+
+.ui-button-secondary2 {
+    margin-left: auto;
+    font-size: 0.7em !important;
+    width: 45% !important;
+    background-color: red !important;
+    color: white;
+    letter-spacing: 2px;
+    border: none;
+    transition: font-size 0.3s ease !important;
+}
+
+.ui-button-secondary2:hover {
+    background-color: white !important;
+    font-size: 0.8em !important;
+    color: red !important;
+}
+
+.edit-button {
+    background-color: #28a745 !important;
+    color: white;
+    margin-right: 10px !important;
+    letter-spacing: 2px;
+    border: none;
+    transition: font-size 0.3s ease !important;
+    font-size: 0.5em !important;
+}
+
+.edit-button:hover {
+    background-color: white !important;
+    font-size: 0.6em !important;
+    color: #28a745 !important;
+}
+
+.delete-button {
+    background-color: red !important;
+    color: white;
+    letter-spacing: 2px;
+    border: none;
+    transition: font-size 0.3s ease !important;
+    font-size: 0.5em !important;
+}
+
+.delete-button:hover {
+    background-color: white !important;
+    font-size: 0.6em !important;
+    color: red !important;
+}
+
+.dark-mode .ui-dialog-titlebar {
+    background-color: #222222 !important;
+}
+
+.ui-dialog-titlebar {
+    background-color: #f4f4f4 !important;
+}
+
+.dark-mode .ui-dialog {
+    background-color: transparent !important;
+}
+
+.dark-mode .ui-dialog .ui-dialog-content {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .ui-inputtext,
+.dark-mode .ui-dialog .ui-panelgrid .ui-outputlabel {
+    background-color: #444444 !important;
+    color: #ffffff !important;
+    border: 1px solid #555555;
+}
+
+.dark-mode .ui-dialog-title {
+    color: #ffffff !important;
+}
+
+.ui-dialog-title {
+    color: #000000 !important;
+}
+
+.ui-dialog {
+    background-color: #ffffff !important;
+    color: #000000 !important;
+}
+
+.dark-mode .delete-button {
+    background-color: red;
+    color: white;
+    border-color: white;
+    border-width: 1px;
+}
+
+.dark-mode .edit-button {
+    background-color: #28a745;
+    color: white;
+}
+
+.dark-mode .ui-button {
+    background-color: #555 !important;
+    color: white !important;
+}

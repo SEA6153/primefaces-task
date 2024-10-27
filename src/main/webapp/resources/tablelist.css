@@ -1,0 +1,184 @@
+body {
+    transition: background-color 0.3s, color 0.3s;
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-style: normal;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+    transition: font-size 0.3s ease;
+}
+
+a:hover {
+    font-size: large;
+    color: rgba(83, 83, 232, 0.86);
+}
+
+.custom-table {
+    background-color: black;
+    color: black;
+    width: 100%;
+}
+
+.custom-table .ui-widget-header {
+    background-color: #f0f0f0;
+    color: black;
+}
+
+.custom-table .ui-column-title {
+    color: black;
+}
+
+.custom-table .ui-datatable-data {
+    background-color: white;
+}
+
+.theme-toggle-button {
+    font-size: 0.2em !important;
+    margin-bottom: 5px !important;
+}
+
+.delete-button {
+    background-color: red !important;
+    color: white;
+    letter-spacing: 2px;
+    border: 1px solid gray !important;
+    transition: font-size 0.3s ease !important;
+    font-size: 0.5em !important;
+}
+
+.delete-button:hover {
+    background-color: rgba(203, 192, 192, 0.25) !important;
+    font-size: 0.6em !important;
+    color: red !important;
+}
+
+.dialog-add-button {
+    background-color: #159815 !important;
+    margin-right: 10px !important;
+    letter-spacing: 2px;
+    border: 1px solid gray !important;
+    transition: font-size 0.3s ease !important;
+    font-size: 0.5em !important;
+}
+
+.dialog-add-button:hover {
+    background-color: rgba(0, 128, 0, 0.14) !important;
+    font-size: 0.6em !important;
+    color: #159815 !important;
+}
+
+.edit-button {
+    background-color: #159815 !important;
+    margin-right: 10px !important;
+    letter-spacing: 2px;
+    border: 1px solid gray !important;
+    transition: font-size 0.3s ease !important;
+    font-size: 0.5em !important;
+}
+
+.edit-button:hover {
+    background-color: rgba(0, 128, 0, 0.14) !important;
+    font-size: 0.6em !important;
+    color: #159815 !important;
+}
+
+.dark-mode .edit-button:hover {
+    background-color: #159815 !important;
+    color: #72c572 !important;
+}
+
+.addTable-button {
+    margin-bottom: 10px !important;
+    margin-right: 10px !important;
+    font-size: 0.5em !important;
+    width: 8%;
+}
+
+.dark-mode {
+    background-color: #000;
+    color: white;
+}
+
+.dark-mode .custom-table {
+    background-color: #222;
+    color: white !important;
+}
+
+.dark-mode .custom-table th {
+    background-color: #333;
+    color: white !important;
+}
+
+.dark-mode .custom-table td {
+    background-color: #444;
+    color: white !important;
+}
+
+.dark-mode .ui-widget-header {
+    background-color: #333 !important;
+    color: white !important;
+}
+
+.dark-mode .ui-dialog {
+    background-color: #222 !important;
+    color: white;
+}
+
+.dark-mode .ui-dialog-title {
+    color: white !important;
+}
+
+.dark-mode .ui-dialog-content {
+    background-color: #333 !important;
+    color: white !important;
+}
+
+.dark-mode .ui-column-title {
+    color: white !important;
+}
+
+.dark-mode .ui-inputtext {
+    background-color: #444 !important;
+    color: white !important;
+    border: 1px solid #555;
+}
+
+.dark-mode .ui-button {
+    background-color: #555 !important;
+    color: white !important;
+}
+
+.dark-mode .ui-button:hover {
+    background-color: #666 !important;
+}
+
+.dark-mode .delete-button {
+    border-color: white;
+}
+
+.dark-mode .delete-button:hover {
+    background-color: rgba(107, 3, 3, 0.58) !important;
+    color: red !important;
+}
+
+.dark-mode .add-button {
+    background-color: blue;
+    color: white;
+}
+
+.dark-mode a:hover {
+    color: lightskyblue;
+}
+
+.dark-mode .ui-state-active {
+    background-color: #333333 !important;
+    color: #ffffff !important;
+}
+
+.dark-mode .ui-state-hover {
+    background-color: #444444 !important;
+    color: #ffffff !important;
+}
